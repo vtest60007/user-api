@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const sequelize = require('./db'); // import Sequelize instance
+const sequelize = require('./common/db'); // import Sequelize instance
 const User = require('./models/User'); // import model
 
 dotenv.config();
