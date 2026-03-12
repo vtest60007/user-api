@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const sequelize = require('../common/db');
-const defineUser = require('../common/models/User');
-const User = defineUser(sequelize);
+const User = require('../common/models/User'); // ✅ direct import
 
 const generateAccessToken = (username, userId, role) =>
   jwt.sign({ username, userId, role }, process.env.JWT_SECRET || 'fallbackSecret', { expiresIn: '24h' });
@@ -10,7 +8,7 @@ const generateAccessToken = (username, userId, role) =>
 // Register new user
 exports.register = async (req, res) => {
   try {
-    console.log('Incoming body:', req.body); // 👀 Debug log
+    console.log('Incoming body:', req.body);
 
     const { username, email, password, firstName, lastName, age } = req.body;
 

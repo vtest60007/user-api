@@ -1,6 +1,4 @@
-const sequelize = require('../common/db');
-const defineUser = require('../common/models/User');
-const User = defineUser(sequelize);
+const User = require('../common/models/User');
 
 // Get all users (admin only)
 exports.getAllUsers = async (req, res) => {
